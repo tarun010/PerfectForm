@@ -1,10 +1,9 @@
-Course Project - Computer Science 4301  
+Course Project - Computer Vision (COMP4301)  
 
 
 [![PerfectForm-Jacob](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNTZlYmIwMGZmYmYwNDVjZTczMDVmODJhMmFjZWI3ZGQyZTY4OTk5ZiZlcD12MV9pbnRlcm5hbF9naWZzX2dpZklkJmN0PWc/2Vn59yArROyFxQOtm1/giphy.gif)](https://www.youtube.com/watch?v=Sj6p9GySbcU)
 
-[![PerfectForm-Tarun]()](https://www.youtube.com/watch?v=Sj6p9GySbcU)
-
+[![PerfectForm-Tarun](https://github.com/tarun010/PerfectForm/assets/25506296/95f4755c-5eaf-4005-ad4a-f8f00e516144)](https://youtu.be/Sj6p9GySbcU?t=325)
 
 [Click here to watch the project presentation.](https://www.youtube.com/watch?v=Sj6p9GySbcU)
 
