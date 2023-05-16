@@ -1,6 +1,9 @@
 Course Project - Computer Science 4301  
 
-[![Quoridor-Gameplay](https://user-images.githubusercontent.com/25506296/126878967-4237714d-2f1a-4dc7-b6ae-41f049c6eb9a.gif)](https://www.youtube.com/watch?v=Sj6p9GySbcU)
+
+[![PerfectForm-Jacob](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNTZlYmIwMGZmYmYwNDVjZTczMDVmODJhMmFjZWI3ZGQyZTY4OTk5ZiZlcD12MV9pbnRlcm5hbF9naWZzX2dpZklkJmN0PWc/2Vn59yArROyFxQOtm1/giphy.gif)](https://www.youtube.com/watch?v=Sj6p9GySbcU)
+
+[Click here to watch the project presentation.](https://www.youtube.com/watch?v=Sj6p9GySbcU)
 
 Divya Murali Krishnan, Tarun Subramanian, Jacob Critch  
 
