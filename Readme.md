@@ -6,18 +6,18 @@ Divya Murali Krishnan, Tarun Subramanian, Jacob Critch
 
 
   
-#Introduction  
+# Introduction  
 The objective of this project was to design a Python application utilizing computer vision techniques for analyzing a side-profile video of an individual doing exercise. The primary goal was to develop a tool capable of determining the posture of the subject to prevent injury and optimize workout results. For this purpose, MediaPipe Pose was employed, which is a high-fidelity body pose tracking solution that can extract 33 3D landmarks and a background segmentation mask from RGB frames. Additionally, OpenCV, an open-source computer vision library, was utilized for image and video processing. 
 
  
-#Code and Implementation 
+# Code and Implementation 
 
-##Dependencies and requirements 
+## Dependencies and requirements 
 
 The project was developed in Python, utilizing numpy, MediaPipe, OpenCV, PyQT5 and python’s math library. This program will run in almost any device as long as it is connected to a camera.  
 
 
-##Project structure  
+## Project structure  
 
 The application is centered around an OpenCV VideoCapture feed loop, which takes input from the device’s connected camera(s). Each frame is fed into several functions (derived from MediaPipe) which process and draw on the frame using CV functions. We developed functions to evaluate the offset distance, body posture inclination, and to dispatch alerts for poor body posture. The primary approach was to leverage the body posture detection main loop, which we modified for our specific requirements. We obtained the coordinates of the body posture landmarks, which enabled us to determine the offset distance and inclination of the subject's body posture.  
 
@@ -49,7 +49,7 @@ Our code is comprised of 3 files:
 - Formchecker.py:  Using MediaPipe libraries for pose and hand landmark detections, this script contains utility functions to calculate angles, palm normal vectors, and checks if the user should start the exercise based on their hand position. It then checks if the person is standing sideways and in the correct starting position, as well as evaluates their posture during the descent, ascent, and bottom of a squat.  
 
 
-##Flow of control  
+## Flow of control  
   
 
 The main execution starts in main.py. It initializes and sets up the user interface, as well as the video stream using OpenCV. In the main loop, main.py reads frames from the video stream and processes them. For each frame, it calls the process_frame() function in mediapipe_pose.py. The process_frame() function in mediapipe_pose.py uses the MediaPipe library to detect the pose and hand landmarks in the input frame. It returns the processed frame, pose landmarks, and hand landmarks to main.py. 
@@ -78,17 +78,17 @@ The squats() function is called, which first calls should_start() function to ch
 
  
 
-##Results  
+## Results  
 
 Our Python application effectively detects the posture of someone working out by analyzing an uploaded video of a side-profile. The tool can be used as a workout aid to get better results and avoid injury.  
  
 
-##Future work 
+## Future work 
 
 This app was intended to be used initially as a workout form checker, to ensure that  
    
 
-##Conclusion  
+## Conclusion  
 
 In conclusion, we have successfully developed a desktop Python application that utilizes computer vision techniques to analyze an uploaded video of a side-profile of someone working out. We used MediaPipe Pose and OpenCV as our primary packages and created several functions to calculate offset distance, body posture inclination, and to send alerts for poor body posture. This tool has the potential to be used as a workout aid to help users achieve better results and avoid injury.  
 
@@ -96,7 +96,7 @@ In conclusion, we have successfully developed a desktop Python application that 
    
    
 
-References:  
+## References:  
 
 - "MediaPipe Pose," Google Developers, https://mediapipe.dev/.   
 
