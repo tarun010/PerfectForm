@@ -1,0 +1,119 @@
+#just a whiteboard because I don't want to delete code. Feel free to add your scrap code in here if you'd like as well
+
+
+import cv2
+import numpy as np
+from kivy.app import App
+from kivy.uix.boxlayout import BoxLayout
+from kivy.uix.filechooser import FileChooserListView
+from kivy.uix.image import Image
+from kivy.graphics.texture import Texture
+from kivy.uix.screenmanager import ScreenManager, Screen
+from kivy.uix.screenmanager import Screen
+from kivy.uix.videoplayer import VideoPlayer
+
+class MainScreen(Screen):
+    def on_enter(self):
+        self.file_chooser.filters = ["*.mp4", "*.avi"]
+        self.file_chooser.bind(selection=self.on_selection)
+
+    def on_selection(self, file_chooser, selection):
+        if selection:
+            file_path = selection[0]
+            self.video_player.source = file_path
+            self.video_player.state = "play"
+
+class VideoScreen(Screen):
+    def on_pre_enter(self):
+        self.video_player = VideoPlayer()
+        self.add_widget(self.video_player)
+
+
+class VideoPlayerApp(App):
+
+    def build(self):
+        layout = BoxLayout(orientation='vertical')
+        file_chooser = FileChooserListView()
+        file_chooser.bind(selection=self.on_selection)
+        layout.add_widget(file_chooser)
+        self.texture = Texture.create(size=(1, 1))
+        self.texture.flip_vertical()
+        self.image = Image(texture=self.texture)
+        layout.add_widget(self.image)
+        return layout
+    
+    def on_selection(self, file_chooser, selection, *args):
+        if selection:
+            file_path = selection[0]
+#           cap = cv2.VideoCapture("C:/Users/dmura/OneDrive/Desktop/MUN/Term 8/Computer Vision/Project/computer_vision_project/Exercise Tutorial - Squat.mp4")
+            cap = cv2.VideoCapture(file_path)
+            fps = cap.get(cv2.CAP_PROP_FPS)
+            while True:
+                ret, frame = cap.read()
+                if not ret:
+                    break
+                # Convert frame to texture and update the Kivy image widget
+                self.update_texture(frame)
+                # Wait for a short time to match the video FPS
+                cv2.waitKey(int(1000/fps))
+            cap.release()
+            cv2.destroyAllWindows()
+            # Start playing the video
+            self.ids.video_player.state = 'play'
+
+
+
+    def update_texture(self, frame):
+        # Convert frame to texture and update the Kivy image widget
+        buffer = cv2.flip(frame, 0).tostring()
+        self.texture.blit_buffer(buffer, colorfmt='bgr', bufferfmt='ubyte')
+        self.image.texture = self.texture
+
+
+
+
+class MyApp(App):
+    def build(self):
+        sm = ScreenManager()
+        sm.add_widget(MainScreen(name='main'))
+        sm.add_widget(VideoScreen(name='video'))
+        return sm
+
+
+
+if __name__ == '__main__':
+    VideoPlayerApp().run()
+    MyApp().run()
+
+
+
+
+# identify joints scrap function
+
+def identify_joints(self, frame):
+    # Load OpenPose model
+    openpose_path = "C:\Users\dmura\OneDrive\Desktop\MUN\Term 8\Computer Vision\Project\computer_vision_project\kivy_venv\openpose"
+    openpose_params = {"model_folder": f"C:\Users\dmura\OneDrive\Desktop\MUN\Term 8\Computer Vision\Project\computer_vision_project\kivy_venv\openpose\models"}
+    openpose_net = op.OpenPose(**openpose_params)
+
+    # Read video
+    video_path = "path/to/video.mp4"
+    cap = cv2.VideoCapture(video_path)
+
+    # Iterate through frames
+    while True:
+        ret, frame = cap.read()
+        if not ret:
+            break
+        
+    # Preprocess frame for OpenPose
+    h, w, c = frame.shape
+    net_input = cv2.dnn.blobFromImage(frame, 1/255.0, (368, 368), swapRB=False, crop=False)
+
+    # Run OpenPose on frame
+    openpose_net.setInput(net_input)
+    keypoints = openpose_net.forward()
+    keypoints = keypoints[:, :, :2]  # Extract x, y coordinates only
+
+    # Do something with the keypoints
+    # ...
