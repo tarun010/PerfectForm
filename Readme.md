@@ -52,19 +52,19 @@ Our code is comprised of 3 files:
 ## Flow of control  
   
 
-The main execution starts in main.py. It initializes and sets up the user interface, as well as the video stream using OpenCV. In the main loop, main.py reads frames from the video stream and processes them. For each frame, it calls the process_frame() function in mediapipe_pose.py. The process_frame() function in mediapipe_pose.py uses the MediaPipe library to detect the pose and hand landmarks in the input frame. It returns the processed frame, pose landmarks, and hand landmarks to main.py. 
+- The main execution starts in main.py. It initializes and sets up the user interface, as well as the video stream using OpenCV. In the main loop, main.py reads frames from the video stream and processes them. For each frame, it calls the process_frame() function in mediapipe_pose.py. The process_frame() function in mediapipe_pose.py uses the MediaPipe library to detect the pose and hand landmarks in the input frame. It returns the processed frame, pose landmarks, and hand landmarks to main.py. 
 
-Back in main.py, it calls the squats() function in formchecker.py with the pose landmarks, hand landmarks, and the input frame as arguments. 
+- Back in main.py, it calls the squats() function in formchecker.py with the pose landmarks, hand landmarks, and the input frame as arguments. 
 
-The squats() function in formchecker.py performs several checks and calculations to analyze the user's squat form. It calls helper functions like if_standing_sideways(), should_start(), and calculate_angle() from the same file, and interacts with mediapipe_pose.py to access the pose landmarks. Based on the results of the checks and calculations, the squats() function updates the global state variables representing the current squat state (starting, descending, bottom, ascending, or idk). It also updates the squat count and provides feedback on the user's form, if necessary. The squats() function then returns the feedback status to main.py, which displays the status and squat count on the frame using OpenCV's cv2.putText() function. 
+- The squats() function in formchecker.py performs several checks and calculations to analyze the user's squat form. It calls helper functions like if_standing_sideways(), should_start(), and calculate_angle() from the same file, and interacts with mediapipe_pose.py to access the pose landmarks. Based on the results of the checks and calculations, the squats() function updates the global state variables representing the current squat state (starting, descending, bottom, ascending, or idk). It also updates the squat count and provides feedback on the user's form, if necessary. The squats() function then returns the feedback status to main.py, which displays the status and squat count on the frame using OpenCV's cv2.putText() function. 
 
-Finally, main.py shows the processed frame with the overlaid pose landmarks, hand landmarks, and feedback to the user. This process repeats for each frame in the video stream. 
+- Finally, main.py shows the processed frame with the overlaid pose landmarks, hand landmarks, and feedback to the user. This process repeats for each frame in the video stream. 
 
-In summary, the flow of control starts in main.py and moves back and forth between formchecker.py and mediapipe_pose.py to process the frames, analyze the user's squat form, and provide real-time feedback. 
+- In summary, the flow of control starts in main.py and moves back and forth between formchecker.py and mediapipe_pose.py to process the frames, analyze the user's squat form, and provide real-time feedback. 
 
   
 
-Figure 5 shows the sequence diagram of our code when the app is initiated and set to the default device camera, with squat chosen as our work out.  
+- Figure 5 shows the sequence diagram of our code when the app is initiated and set to the default device camera, with squat chosen as our work out.  
 
   
 
@@ -72,7 +72,7 @@ Figure 5 shows the sequence diagram of our code when the app is initiated and se
 
    
 
-Within the function that checks how the squats is done, the flow of control is as follows:  
+- Within the function that checks how the squats is done, the flow of control is as follows:  
 
 The squats() function is called, which first calls should_start() function to check if user wants to start the workout. It then calls if_sideways() to check if the person is standing sideways. If both these conditions are satisfied, it then checks and assigns squat states to indicate whether the person is starting a squat, descencding, at the bottom of the squat or ascending. We have a variable, ‘count’ that counts the number of repetitions of the exercise. In each state, the program checks knee, back, shoulder and feet posture using mediapipe pose landmarks. It also checks if the person is holding the squat in the ‘bottom’ state for a minimum of 3 seconds. 
 
@@ -80,17 +80,17 @@ The squats() function is called, which first calls should_start() function to ch
 
 ## Results  
 
-Our Python application effectively detects the posture of someone working out by analyzing an uploaded video of a side-profile. The tool can be used as a workout aid to get better results and avoid injury.  
+- Our Python application effectively detects the posture of someone working out by analyzing an uploaded video of a side-profile. The tool can be used as a workout aid to get better results and avoid injury.  
  
 
 ## Future work 
 
-This app was intended to be used initially as a workout form checker, to ensure that  
+- This app was intended to be used initially as a workout form checker, to ensure that  
    
 
 ## Conclusion  
 
-In conclusion, we have successfully developed a desktop Python application that utilizes computer vision techniques to analyze an uploaded video of a side-profile of someone working out. We used MediaPipe Pose and OpenCV as our primary packages and created several functions to calculate offset distance, body posture inclination, and to send alerts for poor body posture. This tool has the potential to be used as a workout aid to help users achieve better results and avoid injury.  
+- In conclusion, we have successfully developed a desktop Python application that utilizes computer vision techniques to analyze an uploaded video of a side-profile of someone working out. We used MediaPipe Pose and OpenCV as our primary packages and created several functions to calculate offset distance, body posture inclination, and to send alerts for poor body posture. This tool has the potential to be used as a workout aid to help users achieve better results and avoid injury.  
 
   
    
