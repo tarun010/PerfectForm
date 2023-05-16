@@ -1,6 +1,6 @@
-Course Project  
+Course Project - Computer Science 4301  
 
-Computer Science 4301   
+[![Quoridor-Gameplay](https://user-images.githubusercontent.com/25506296/126878967-4237714d-2f1a-4dc7-b6ae-41f049c6eb9a.gif)](https://www.youtube.com/watch?v=Sj6p9GySbcU)
 
 Divya Murali Krishnan, Tarun Subramanian, Jacob Critch  
 
