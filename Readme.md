@@ -26,8 +26,9 @@ The project was developed in Python, utilizing numpy, MediaPipe, OpenCV, PyQT5 a
 
 The application is centered around an OpenCV VideoCapture feed loop, which takes input from the device’s connected camera(s). Each frame is fed into several functions (derived from MediaPipe) which process and draw on the frame using CV functions. We developed functions to evaluate the offset distance, body posture inclination, and to dispatch alerts for poor body posture. The primary approach was to leverage the body posture detection main loop, which we modified for our specific requirements. We obtained the coordinates of the body posture landmarks, which enabled us to determine the offset distance and inclination of the subject's body posture.  
 
+<img width="158" alt="image" src="https://github.com/tarun010/PerfectForm/assets/25506296/bcc1eee0-a043-4cc8-99ff-a180ddf29792">
 
-Figure 1: UML diagram for the project![image](https://github.com/tarun010/PerfectForm/assets/25506296/cc5301d2-870d-4fcd-8411-cfe6f0d02a34)
+Figure 1: UML diagram for the project
 
   
 
@@ -35,19 +36,15 @@ Our code is comprised of 3 files:
 
 
 - app.py: This script is a PyQt5-based graphical user interface for a simple application called "PerfectForm". The application allows users to select a mode (Squat or Curl), choose a camera from available cameras, and start or stop the camera. The script imports main module, which is assumed to contain the functions startCam(), stopCam(), setMode(), and setCamera().  
-Figure 2: UML diagram for app.py![image](https://github.com/tarun010/PerfectForm/assets/25506296/9e4753a0-0110-4c01-b14b-9bdeea8b7458)
+<img width="170" alt="image" src="https://github.com/tarun010/PerfectForm/assets/25506296/41fc9d3c-3a31-4be5-a233-071343b76879">
+Figure 2: UML diagram for app.py
 
 
   
-
-  
-
-  
-
- 
 
 - Main.py: This script contains the logic for setting up the camera, processing the images using the MediaPipe library, and checking the form for the user's chosen exercise mode (Squat or Curl). The script imports a formchecker module, which is assumed to contain the function squats(). The main.py script provides functions to start and stop the camera, set the exercise mode, and set the camera index.  
-Figure 3: UML diagram for main.py![image](https://github.com/tarun010/PerfectForm/assets/25506296/87673eda-c078-4a2f-9da1-b43441f94a7f)
+<img width="203" alt="image" src="https://github.com/tarun010/PerfectForm/assets/25506296/70a87c2b-44e0-47e5-af32-7b1e2f57d76b">
+Figure 3: UML diagram for main.py
 
 
   
@@ -56,8 +53,9 @@ Figure 3: UML diagram for main.py![image](https://github.com/tarun010/PerfectFor
 
   
 
-- Formchecker.py:  Using MediaPipe libraries for pose and hand landmark detections, this script contains utility functions to calculate angles, palm normal vectors, and checks if the user should start the exercise based on their hand position. It then checks if the person is standing sideways and in the correct starting position, as well as evaluates their posture during the descent, ascent, and bottom of a squat.  
-Figure 4: UML diagram for formchecker.py![image](https://github.com/tarun010/PerfectForm/assets/25506296/059743bc-20ae-4051-864e-701019587a3a)
+- Formchecker.py:  Using MediaPipe libraries for pose and hand landmark detections, this script contains utility functions to calculate angles, palm normal vectors, and checks if the user should start the exercise based on their hand position. It then checks if the person is standing sideways and in the correct starting position, as well as evaluates their posture during the descent, ascent, and bottom of a squat.
+<img width="242" alt="image" src="https://github.com/tarun010/PerfectForm/assets/25506296/3eae779f-6099-41fa-97df-73021d868d10">
+Figure 4: UML diagram for formchecker.py
 
 
 
@@ -77,18 +75,23 @@ Figure 4: UML diagram for formchecker.py![image](https://github.com/tarun010/Per
   
 
 - Figure 5 shows the sequence diagram of our code when the app is initiated and set to the default device camera, with squat chosen as our work out.  
-Figure 5: Sequence diagram when app is initiated using default camera on squat mode![image](https://github.com/tarun010/PerfectForm/assets/25506296/92c8c323-e79a-4c80-967d-915d23d229b7)
+
+<img width="468" alt="image" src="https://github.com/tarun010/PerfectForm/assets/25506296/37487585-69c2-488e-aa7c-03d14f7181b8">
+
+Figure 5: Sequence diagram when app is initiated using default camera on squat mode!
 
 
   
 
    
 
-- Within the function that checks how the squats is done, the flow of control is as follows:  
+- Within the function that checks how the squats is done, the flow of control is as follows: 
+- The squats() function is called, which first calls should_start() function to check if user wants to start the workout. It then calls if_sideways() to check if the person is standing sideways. If both these conditions are satisfied, it then checks and assigns squat states to indicate whether the person is starting a squat, descencding, at the bottom of the squat or ascending. We have a variable, ‘count’ that counts the number of repetitions of the exercise. In each state, the program checks knee, back, shoulder and feet posture using mediapipe pose landmarks. It also checks if the person is holding the squat in the ‘bottom’ state for a minimum of 3 seconds. 
 
-The squats() function is called, which first calls should_start() function to check if user wants to start the workout. It then calls if_sideways() to check if the person is standing sideways. If both these conditions are satisfied, it then checks and assigns squat states to indicate whether the person is starting a squat, descencding, at the bottom of the squat or ascending. We have a variable, ‘count’ that counts the number of repetitions of the exercise. In each state, the program checks knee, back, shoulder and feet posture using mediapipe pose landmarks. It also checks if the person is holding the squat in the ‘bottom’ state for a minimum of 3 seconds. 
+<img width="468" alt="image" src="https://github.com/tarun010/PerfectForm/assets/25506296/a873d12f-8b18-484a-9355-883290d07285">
 
-Figure 6: Sequence diagram showing flow of control within formchecker.py, when the squats() function is called![image](https://github.com/tarun010/PerfectForm/assets/25506296/439a5755-bc67-4ea1-96f0-510433c1bd4d)
+
+Figure 6: Sequence diagram showing flow of control within formchecker.py, when the squats() function is called
 
  
 
@@ -97,10 +100,13 @@ Figure 6: Sequence diagram showing flow of control within formchecker.py, when t
 - Our Python application effectively detects the posture of someone working out by analyzing an uploaded video of a side-profile. The tool can be used as a workout aid to get better results and avoid injury.
 - At the moment, the code is able to check if the person is holding out their palm for 3 seconds and start the exercise check once this is satisfied.
 
-Figure 7: Program checks if hands are held either facing directly towards or away from camera for 3 seconds![image](https://github.com/tarun010/PerfectForm/assets/25506296/5624e678-5595-4e15-9719-2def62f5fd68)
+<img width="468" alt="image" src="https://github.com/tarun010/PerfectForm/assets/25506296/513c0d51-ce38-45a8-adab-220b614bcea5">
+
+Figure 7: Program checks if hands are held either facing directly towards or away from camera for 3 seconds
 
 - The program then prompts the person to stand sideways.
-Figure 8: If person is not standing sideways, there is a prompt on the top of the screen that asks the person to stand facing sideways![image](https://github.com/tarun010/PerfectForm/assets/25506296/868f6cc5-aa5f-419f-beec-13ca804d287a)
+<img width="468" alt="image" src="https://github.com/tarun010/PerfectForm/assets/25506296/7e4f7fae-b111-424f-b4a4-cc090faff539">
+Figure 8: If person is not standing sideways, there is a prompt on the top of the screen that asks the person to stand facing sideways
 
 - Following this, is enters the 4 different states: starting, ascending, bottom and descending based on the knee angle and previous state. 
 
@@ -110,10 +116,14 @@ In each state, the posture is checked using the following parameters:
 3.	The angle between shoulder, hip and knee are constantly checked with varying thresholds depending on state.
 4.	The angle between hip, knee and ankle are constantly checked with varying thresholds depending on state.
 
-If the user holds a good squat state for 3 seconds at ‘bottom’ state, it counts as 1 repetition!
-Figure 9: User standing sideways, ready to squat![image](https://github.com/tarun010/PerfectForm/assets/25506296/4d371ae2-bf1d-4a09-8699-1bf38138058e)
+If the user holds a good squat state for 3 seconds at ‘bottom’ state, it counts as 1 repetition.
+<img width="468" alt="image" src="https://github.com/tarun010/PerfectForm/assets/25506296/aac2d94a-35c4-4fc4-a730-ef74f680b1fa">
 
-Figure 10: User in the squat position for 3 seconds, count is incremented![image](https://github.com/tarun010/PerfectForm/assets/25506296/239721e1-809f-4dab-93c4-398d421f40c3)
+Figure 9: User standing sideways, ready to squat
+
+<img width="468" alt="image" src="https://github.com/tarun010/PerfectForm/assets/25506296/f8cd7d60-badf-417d-8c22-a3b3c6608089">
+
+Figure 10: User in the squat position for 3 seconds, count is incremented
 
 
 
