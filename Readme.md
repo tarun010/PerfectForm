@@ -7,7 +7,7 @@ Course Project - Computer Vision (COMP4301)
 
 [Click here to watch the project presentation.](https://www.youtube.com/watch?v=Sj6p9GySbcU)
 
-Divya Murali Krishnan, Tarun Subramanian, Jacob Critch  
+Team: Divya Murali Krishnan, Tarun Subramanian, Jacob Critch  
 
 
   
